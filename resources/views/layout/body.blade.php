@@ -75,8 +75,6 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}"></script>
     <!-- JavaScript Libraries -->
     <script type="text/javascript" src="{{ asset('js/jquery-3.6.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
@@ -88,6 +86,8 @@
     <script type="text/javascript" src="{{ asset('js/moment-timezone.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/ckeditor.js') }}"></script>    
+    <!-- Template Javascript -->
+    <script src="{{ asset('js/main.js') }}"></script>
     {{-- @yield('scripts')
     @stack('scripts') --}}
 </body>
