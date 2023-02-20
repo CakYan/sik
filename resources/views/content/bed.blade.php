@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="card-body">
                                           <h5 class="card-title">Data Pasien</h5>
-                                          @if ($pasiens->id_bed != null)      
+                                          @if ($pasiens->id_bed == $bed->id && $pasiens->status == 'Sedang Rawat Inap')      
                                             <div class="col-sm-12 col-xl-6">
                                                 <div class="bg-light">
                                                     <table class="table table-hover bg-light">
@@ -50,7 +50,7 @@
                                                 </div>
                                             </div>
                                           @else
-                                            Kamar Kosong
+                                            <div class="">Kamar Kosong</div>
                                           @endif
                                           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_pasien{{ $bed->id }}">
                                             Input Data Pasien

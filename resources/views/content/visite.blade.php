@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-body">
                       <blockquote class="blockquote mb-0">
-                        <textarea name="text" id="editor" cols="20" rows="10"></textarea>
+                        <textarea name="text" id="editor" cols="20" rows="10" style=""></textarea>
                       </blockquote>
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_visite">View Detail</button>
                       <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_visite">Add Visite</button>

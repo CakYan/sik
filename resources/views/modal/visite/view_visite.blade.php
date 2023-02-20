@@ -7,7 +7,7 @@
           </div>
           <div class="modal-body">
             <div class="form-control">
-                <textarea name="visite" id="editor" cols="30" rows="10"></textarea>
+                <textarea name="visite" id="editor" cols="57" rows="10"></textarea>
             </div>
           </div>
           <div class="modal-footer">
