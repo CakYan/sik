@@ -6,13 +6,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <div class="form-control">
-                <textarea name="visite" id="editor" cols="57" rows="10"></textarea>
-              </div>
+            <form action="">
+              <input type="text" class="form-control mb-3" name="nama_ppa" placeholder="Nama PPA">
+              <textarea name="visite" class="form-control" id="editor1" cols="57" rows="10" placeholder="Ketik Disini"></textarea>
+              <button type="button" class="btn btn-success mt-3" style="float: right;">Submit</button>
+            </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success">Submit</button>
           </div>
         </div>
       </div>
     </div>
+@push('scripts')
+    <script></script>
+@endpush

@@ -1,4 +1,4 @@
-<div class="modal fade" id="view_visite" tabindex="-1">
+<div class="modal fade" id="view_visite_apoteker" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -7,11 +7,15 @@
           </div>
           <div class="modal-body">
             <div class="form-control">
-                <textarea name="visite" id="editor" cols="57" rows="10"></textarea>
+              @foreach ($visites as $visite)
+                @if ($pasiens->id == $visite->pasien_id && $visite->id_ppa == 4)
+                  - {{ $visite->visite }} by {{ $visite->nama_ppa }} at {{ $visite->tgl_visite }} <br>
+                @endif
+              @endforeach
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

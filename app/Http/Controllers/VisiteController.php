@@ -6,6 +6,7 @@ use App\Models\visite;
 use App\Http\Requests\StorevisiteRequest;
 use App\Http\Requests\UpdatevisiteRequest;
 use Illuminate\Http\Request;
+use App\Models\Pasien;
 
 class VisiteController extends Controller
 {
@@ -14,9 +15,13 @@ class VisiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('content.visite');
+        $pasiens = Pasien::find($id);
+        $visites = visite::leftjoin('pasiens', 'visites.pasien_id','=', 'pasiens.id')
+        ->select('*', 'pasiens.id AS idPasien')->get();
+        // return $id;
+        return view('content.visite', compact('pasiens', 'visites'));
     }
 
     /**
@@ -29,7 +34,7 @@ class VisiteController extends Controller
         //
     }
 
-    public function add_dokter(StorevisiteRequest $request, $id){
+    public function add_dokter(Request $request, $id){
         $request->validate([
             'nama_ppa' => 'required',
             'visite' => 'required'
@@ -42,9 +47,15 @@ class VisiteController extends Controller
             'pasien_id' => $id,
             'id_ppa' => 1
         ]);
+
+        if($query){
+            return back()->with('success', 'Catatan Visite Berhasil Ditambahkan');
+        }else{
+            return back()->with('failed', 'Ada Sesuatu Yang Salah');
+        }
     }
 
-    public function add_perawat(StorevisiteRequest $request, $id){
+    public function add_perawat(Request $request, $id){
         $request->validate([
             'nama_ppa' => 'required',
             'visite' => 'required'
@@ -57,9 +68,15 @@ class VisiteController extends Controller
             'pasien_id' => $id,
             'id_ppa' => 2
         ]);
+
+        if($query){
+            return back()->with('success', 'Catatan Visite Berhasil Ditambahkan');
+        }else{
+            return back()->with('failed', 'Ada Sesuatu Yang Salah');
+        }
     }
 
-    public function add_apoteker(StorevisiteRequest $request, $id){
+    public function add_gizi(Request $request, $id){
         $request->validate([
             'nama_ppa' => 'required',
             'visite' => 'required'
@@ -72,9 +89,16 @@ class VisiteController extends Controller
             'pasien_id' => $id,
             'id_ppa' => 3
         ]);
+
+        if($query){
+            return back()->with('success', 'Catatan Visite Berhasil Ditambahkan');
+        }else{
+            return back()->with('failed', 'Ada Sesuatu Yang Salah');
+        }
     }
 
-    public function add_gizi(StorevisiteRequest $request, $id){
+    
+    public function add_apoteker(Request $request, $id){
         $request->validate([
             'nama_ppa' => 'required',
             'visite' => 'required'
@@ -87,6 +111,12 @@ class VisiteController extends Controller
             'pasien_id' => $id,
             'id_ppa' => 4
         ]);
+
+        if($query){
+            return back()->with('success', 'Catatan Visite Berhasil Ditambahkan');
+        }else{
+            return back()->with('failed', 'Ada Sesuatu Yang Salah');
+        }
     }
 
     /**
@@ -143,19 +173,5 @@ class VisiteController extends Controller
     public function destroy(visite $visite)
     {
         //
-    }
-
-    public function uploadImage(Request $request){
-        if ($request->hasFile('upload')) {
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName . '_' . time() . '_' . $extension;
-
-            $request->file('upload')->move(public_path('media'), $fileName);
-
-            $url = asset('media/' . $fileName);
-            return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
-        }
     }
 }

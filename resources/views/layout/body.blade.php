@@ -85,10 +85,8 @@
     <script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/moment-timezone.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/ckeditor.js') }}"></script>    
-    <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
-    {{-- @yield('scripts')
-    @stack('scripts') --}}
+    @yield('scripts')
+    @stack('scripts')
 </body>
 @endsection

@@ -15,35 +15,36 @@
                     {{-- <canvas id="worldwide-sales"></canvas> --}}
                     <div class="container">
                         <div class="row">
-                            @foreach ($beds as $bed)
+                            @foreach ($pasiens as $pasien)
+                            @if ($pasien->status != "Sudah Rawat Inap")
                             <div class="col-sm-4">
                                 <div class="h-100 bg-light rounded p-4">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <h6 class="mb-0">Nomor Bed: {{ $bed->nomor_bed }}</h6>
+                                        <h6 class="mb-0">Nomor Bed: {{ $pasien->nomor_bed }}</h6>
                                     </div>
                                     <div class="card">
                                         <div class="card-header">
-                                          Kamar: {{ $bed->ruangan->nama_ruangan }}
-                                          <button class="btn btn-success" style="float: right" type="button" data-bs-toggle="modal" data-bs-target="#edit_pasien{{ $pasiens->id }}">Edit</button>
+                                          Kamar: {{ $pasien->nama_ruangan }}
+                                          <button class="btn btn-success" style="float: right" type="button" data-bs-toggle="modal" data-bs-target="#edit_pasien{{ $pasien->idPasien }}">Edit</button>
                                         </div>
                                         <div class="card-body">
                                           <h5 class="card-title">Data Pasien</h5>
-                                          @if ($pasiens->id_bed == $bed->id && $pasiens->status == 'Sedang Rawat Inap')      
+                                          @if ($pasien->nama != null && $pasien->status == "Sedang Rawat Inap")      
                                             <div class="col-sm-12 col-xl-6">
                                                 <div class="bg-light">
                                                     <table class="table table-hover bg-light">
                                                         <tbody>
                                                             <tr>
                                                                 <td>Nama</td>
-                                                                <td>{{ $pasiens->nama }}</td>
+                                                                <td>{{ $pasien->nama }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
-                                                                <td>{{ $pasiens->alamat }}</td>
+                                                                <td>{{ $pasien->alamat }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No RM</td>
-                                                                <td>{{ $pasiens->no_rm }}</td>
+                                                                <td>{{ $pasien->no_rm }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -51,15 +52,14 @@
                                             </div>
                                           @else
                                             <div class="">Kamar Kosong</div>
-                                          @endif
-                                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_pasien{{ $bed->id }}">
-                                            Input Data Pasien
-                                          </button>
-                                          <button type="button" class="btn btn-info"><a href="/visite/{{ $pasiens->id }}" style="color: white; text-decoration : none">Visite</a></button>
+                                          @endif                     
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_pasien{{ $pasien->idBed }}">Input Data Pasien</button>
+                                        <button type="button" class="btn btn-info"><a href="/visite/{{ $pasien->idPasien }}" style="color: white; text-decoration : none">Visite</a></button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                          
+                            @endif
                             @endforeach
                         </div>
                     </div>

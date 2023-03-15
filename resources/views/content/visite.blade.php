@@ -14,12 +14,18 @@
                       Dokter
                     </div>
                     <div class="card-body">
-                      <blockquote class="blockquote mb-0">
-                        <textarea name="text" id="editor" cols="20" rows="10" style=""></textarea>
-                      </blockquote>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_visite">View Detail</button>
-                      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_visite">Add Visite</button>
-                    </div>
+                      <form action="/visite_dokter/{{ $pasiens->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="pasien_id" value="{{ $pasiens->id }}">
+                        <blockquote class="blockquote mb-0">
+                          <input type="text" name="nama_ppa" id="nama_ppa" class="form-control mb-3" placeholder="Ketik Nama Disini">
+                          <input type="hidden">
+                          <textarea name="visite" id="editor" cols="20" rows="10" class="form-control mb-3" placeholder="Ketik Disini"></textarea>
+                        </blockquote>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_visite_dokter">View Detail</button>
+                        <button type="submit" class="btn btn-success" style="float: right">Add Visite</button>
+                      </form>
+                      </div>
                   </div>
                   {{-- End Dokter --}}
 
@@ -29,14 +35,19 @@
                       Perawat
                     </div>
                     <div class="card-body">
-                      <blockquote class="blockquote mb-0">
-                        <textarea name="text" id="editor" cols="20" rows="10"></textarea>
-                      </blockquote>
-                      <button type="button" class="btn btn-primary">View Detail</button>
-                      <button type="button" class="btn btn-success">Add Visite</button>
+                      <form action="/visite_perawat/{{ $pasiens->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="pasien_id" value="{{ $pasiens->id }}">
+                        <blockquote class="blockquote mb-0">
+                          <input type="text" name="nama_ppa" id="nama_ppa" class="form-control mb-3" placeholder="Ketik Nama Disini">
+                          <textarea name="visite" id="editor" cols="20" rows="10" class="form-control mb-3" placeholder="Ketik Disini"></textarea>
+                        </blockquote>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_visite_perawat">View Detail</button>
+                        <button type="submit" class="btn btn-success" style="float: right">Add Visite</button>
+                      </form>
                     </div>
                   </div>
-                  {{-- End PErawat --}}
+                  {{-- End Perawat --}}
                 
                   {{-- Gizi --}}
                   <div class="card mt-2 mr-2">
@@ -44,11 +55,16 @@
                       Gizi
                     </div>
                     <div class="card-body">
-                      <blockquote class="blockquote mb-0">
-                        <textarea name="text" id="editor" cols="20" rows="10"></textarea>
-                      </blockquote>
-                      <button type="button" class="btn btn-primary">View Detail</button>
-                      <button type="button" class="btn btn-success">Add Visite</button>
+                      <form action="/visite_gizi/{{ $pasiens->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="pasien_id" value="{{ $pasiens->id }}">
+                        <blockquote class="blockquote mb-0">
+                          <input type="text" name="nama_ppa" id="nama_ppa" class="form-control mb-3" placeholder="Ketik Nama Disini">
+                          <textarea name="visite" id="editor" cols="20" rows="10" class="form-control mb-3" placeholder="Ketik Disini"></textarea>
+                        </blockquote>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_visite_gizi">View Detail</button>
+                        <button type="submit" class="btn btn-success" style="float: right">Add Visite</button>
+                      </form>
                     </div>
                   </div>
                   {{-- End Gizi --}}
@@ -59,11 +75,16 @@
                       Apoteker
                     </div>
                     <div class="card-body">
-                      <blockquote class="blockquote mb-0">
-                        <textarea name="text" id="editor" cols="20" rows="10"></textarea>
-                      </blockquote>
-                      <button type="button" class="btn btn-primary">View Detail</button>
-                      <button type="button" class="btn btn-success">Add Visite</button>
+                      <form action="/visite_apoteker/{{ $pasiens->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="pasien_id" value="{{ $pasiens->id }}">
+                        <blockquote class="blockquote mb-0">
+                          <input type="text" name="nama_ppa" id="nama_ppa" class="form-control mb-3" placeholder="Ketik Nama Disini">
+                          <textarea name="visite" id="editor" cols="20" rows="10" class="form-control mb-3" placeholder="Ketik Disini"></textarea>
+                        </blockquote>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_visite_apoteker">View Detail</button>
+                        <button type="submit" class="btn btn-success" style="float: right">Add Visite</button>
+                      </form>
                     </div>
                   </div>
                   {{-- End Apoteker --}}
@@ -72,8 +93,8 @@
     </div>
 </div>
 @include('modal.visite.add_visite')
-@include('modal.visite.view_visite')
-{{-- @push('script')
-    <script></script>
-@endpush --}}
+@include('modal.visite.view_visite_dokter')
+@include('modal.visite.view_visite_perawat')
+@include('modal.visite.view_visite_gizi')
+@include('modal.visite.view_visite_apoteker')
 @endsection

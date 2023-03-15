@@ -17,12 +17,13 @@ class BedController extends Controller
      */
     public function index()
     {
-        // $pasiens = Pasien::with('visite','bed')->get();
-        $beds = bed::with('ruangan')->get();
-        $pasiens = Pasien::join('beds', 'pasiens.id_bed', '=', 'beds.id')->first();
-        $visites = Visite::all();
-        return view('content.bed', compact('beds', 'pasiens'));
-        // dd($pasiens);
+        $pasiens = Pasien::rightjoin('beds', 'pasiens.id_bed', '=', 'beds.id')
+        ->leftjoin('ruangans','beds.id_ruangan','=','ruangans.id')
+        ->select('pasiens.id AS idPasien','pasiens.nama', 'pasiens.jk','pasiens.alamat','pasiens.no_rm', 'pasiens.nik', 'pasiens.no_telp', 'pasiens.status', 'pasiens.id_bed',
+        'beds.id AS idBed','beds.nomor_bed',
+        'ruangans.nama_ruangan')->orderBy('beds.id', 'ASC')->get();
+        return view('content.bed', compact('pasiens'));
+        // return $pasiens;
     }
 
     /**

@@ -28,10 +28,5 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('css/style.css') }}" rel="stylesheet">
-
-    <!-- Ck-Editor -->
-    {{-- <script type="text/javascript" src="{{ asset('js/ckeditor.js') }}"></script> --}}
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>
-    <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script> --}}
 </head>
 @endsection

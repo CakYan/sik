@@ -27,9 +27,10 @@ Route::get('/dashboard', [HomeController::class, 'index']);
 Route::get('/bed', [BedController::class, 'index']);
 Route::get('/visite/{id}', [VisiteController::class, 'index']);
 
+Route::post('/add_pasien', [PasienController::class, 'store']);
 Route::post('/update_pasien', [PasienController::class, 'update'])->name('update_pasien');
-Route::post('/upload', [VisiteController::class, 'uploadImage'])->name('ckeditor.upload');
 
-// Route::get('/editor', function(){
-//     return view('ck-editor');
-// });
+Route::post('/visite_dokter/{id}', [VisiteController::class, 'add_dokter']);
+Route::post('/visite_perawat/{id}', [VisiteController::class, 'add_perawat']);
+Route::post('/visite_gizi/{id}', [VisiteController::class, 'add_gizi']);
+Route::post('/visite_apoteker/{id}', [VisiteController::class, 'add_apoteker']);

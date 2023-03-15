@@ -6,6 +6,8 @@ use App\Models\pasien;
 use App\Http\Requests\StorepasienRequest;
 use App\Http\Requests\UpdatepasienRequest;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
@@ -35,10 +37,12 @@ class PasienController extends Controller
      * @param  \App\Http\Requests\StorepasienRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorepasienRequest $request, $id)
+    public function store(Request $request)
     {
+        // return ($request);
         $request->validate([
             'nama' => 'required',
+            'jk' => 'required',
             'alamat' => 'required',
             'nik' => 'required',
             'no_telp' => 'required',
@@ -46,19 +50,22 @@ class PasienController extends Controller
             'status' => 'required',
         ]);
 
-        $query = DB::table('pasiens')->insert([
+        $query = pasien::create([
             'nama' => $request->input('nama'),
+            'jk' =>$request->input('jk'),
             'alamat' => $request->input('alamat'),
             'nik' => $request->input('nik'),
             'no_telp' => $request->input('no_telp'),
             'tgl_masuk' => date(now()),
             'no_rm' => $request->input('no_rm'),
             'status' => $request->input('status'),
-            'id_bed' => $id
+            'id_bed' => $request->input('id_bed')
         ]);
+        // return ($query);
 
         if ($query) {
             return back()->with('berhasil', 'Data telah ditambahkan');
+            // return ($query);
         } else {
             return back()->with('fail', 'Ada sesuatu yang salah');
         }
@@ -95,8 +102,10 @@ class PasienController extends Controller
      */
     public function update(UpdatepasienRequest $request, pasien $pasien)
     {
+        // return $request;
         $request->validate([
             'nama' => 'required',
+            'jk' => 'required',
             'alamat' => 'required',
             'nik' => 'required',
             'no_telp' => 'required',
@@ -106,6 +115,7 @@ class PasienController extends Controller
 
         $pasien = Pasien::where('id', $request->input('id'))->update([
             'nama' => $request->input('nama'),
+            'jk' => $request->input('jk'),
             'alamat' => $request->input('alamat'),
             'nik' => $request->input('nik'),
             'no_telp' => $request->input('no_telp'),
