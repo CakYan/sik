@@ -25,7 +25,9 @@
                                     <div class="card">
                                         <div class="card-header">
                                           Kamar: {{ $pasien->nama_ruangan }}
-                                          <button class="btn btn-success" style="float: right" type="button" data-bs-toggle="modal" data-bs-target="#edit_pasien{{ $pasien->idPasien }}">Edit</button>
+                                          @if (session('username' == 'Admin'))
+                                            <button class="btn btn-success" style="float: right" type="button" data-bs-toggle="modal" data-bs-target="#edit_pasien{{ $pasien->idPasien }}">Edit</button>
+                                          @endif
                                         </div>
                                         <div class="card-body">
                                           <h5 class="card-title">Data Pasien</h5>
@@ -52,8 +54,10 @@
                                             </div>
                                           @else
                                             <div class="">Kamar Kosong</div>
-                                          @endif                     
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_pasien{{ $pasien->idBed }}">Input Data Pasien</button>
+                                          @endif
+                                        @if (session('username' == 'Admin'))
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_pasien{{ $pasien->idBed }}">Input Data Pasien</button>
+                                        @endif
                                         <button type="button" class="btn btn-info"><a href="/visite/{{ $pasien->idPasien }}" style="color: white; text-decoration : none">Visite</a></button>
                                         </div>
                                     </div>

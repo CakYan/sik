@@ -65,7 +65,7 @@
                         @endif
 
                         <h3>Sign In</h3>
-                        <form action="login_validation" method="POST">
+                        <form action="{{ route('login') }}" method="POST">
                             @csrf
                         {{-- username --}}                        
                         <div class="form-floating mb-3">
