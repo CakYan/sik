@@ -16,7 +16,7 @@
                     <div class="container">
                         <div class="row">
                             @foreach ($pasiens as $pasien)
-                            @if ($pasien->status != "Sudah Rawat Inap")
+                            {{-- @if ($pasien->status != "Sudah Rawat Inap") --}}
                             <div class="col-sm-4">
                                 <div class="h-100 bg-light rounded p-4">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -25,7 +25,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                           Kamar: {{ $pasien->nama_ruangan }}
-                                          @if (session('username' == 'Admin'))
+                                          @if (session('username') == 'Admin')
                                             <button class="btn btn-success" style="float: right" type="button" data-bs-toggle="modal" data-bs-target="#edit_pasien{{ $pasien->idPasien }}">Edit</button>
                                           @endif
                                         </div>
@@ -55,7 +55,7 @@
                                           @else
                                             <div class="">Kamar Kosong</div>
                                           @endif
-                                        @if (session('username' == 'Admin'))
+                                        @if (session('username') == 'Admin')
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_pasien{{ $pasien->idBed }}">Input Data Pasien</button>
                                         @endif
                                         <button type="button" class="btn btn-info"><a href="/visite/{{ $pasien->idPasien }}" style="color: white; text-decoration : none">Visite</a></button>
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                             </div>                          
-                            @endif
+                            {{-- @endif --}}
                             @endforeach
                         </div>
                     </div>

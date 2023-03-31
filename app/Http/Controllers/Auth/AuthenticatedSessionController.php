@@ -30,8 +30,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $users = User::where('username', $request->input('username'))->first();
-
         session(['username' => $request->input('username')]);
 
         return redirect()->intended(RouteServiceProvider::HOME);
