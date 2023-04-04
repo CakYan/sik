@@ -23,7 +23,7 @@ class PasienFactory extends Factory
             'nik' => $this->faker->unique()->numerify('##########'),
             'no_telp' => $this->faker->phoneNumber(),
             'tgl_masuk' => date(now()),
-            'no_rm' => $this->faker->unique()->numerify('#.#.#.#.#.#'),
+            'no_rm' => $this->faker->unique()->numerify('##.##.##'),
             'status' => 'Sedang Rawat Inap',
             'id_visite' => '1',
             'id_bed' => '1'
