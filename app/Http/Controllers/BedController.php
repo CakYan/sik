@@ -7,6 +7,7 @@ use App\Http\Requests\StorebedRequest;
 use App\Http\Requests\UpdatebedRequest;
 use App\Models\Pasien;
 use App\Models\Visite;
+use Illuminate\Support\Facades\DB;
 
 class BedController extends Controller
 {
@@ -17,13 +18,26 @@ class BedController extends Controller
      */
     public function index()
     {
-        $pasiens = Pasien::rightjoin('beds', 'pasiens.id_bed', '=', 'beds.id')
-        ->leftjoin('ruangans','beds.id_ruangan','=','ruangans.id')
-        ->select('pasiens.id AS idPasien','pasiens.nama', 'pasiens.jk','pasiens.alamat','pasiens.no_rm', 'pasiens.nik', 'pasiens.no_telp', 'pasiens.status', 'pasiens.id_bed',
-        'beds.id AS idBed','beds.nomor_bed',
-        'ruangans.nama_ruangan')->orderBy('beds.id', 'ASC')->get();
-        return view('content.bed', compact('pasiens'));
-        // return $pasiens;
+        $beds = DB::table('beds')
+        ->join('ruangans', 'beds.id_ruangan', '=', 'ruangans.id')
+        ->leftJoin('pasiens', 'beds.id', '=', 'pasiens.id_bed')
+        ->select(
+            'pasiens.id AS idPasien','pasiens.nama', 'pasiens.jk','pasiens.alamat','pasiens.no_rm', 'pasiens.nik', 'pasiens.no_telp', 'pasiens.status', 'pasiens.id_bed', 'pasiens.tgl_lahir',
+            'beds.id AS idBed','beds.nomor_bed',
+            'ruangans.nama_ruangan', 'ruangans.kategori'
+        )
+        ->where(function ($query) {
+            $query->where('beds.status_bed', '!=', 0);
+        })
+        ->orderBy('beds.id', 'ASC')
+        ->get();
+
+        $lists = DB::table('beds')
+        ->join('ruangans', 'beds.id_ruangan', '=', 'ruangans.id')
+        ->select('beds.id', 'ruangans.nama_ruangan', 'ruangans.kategori')
+        ->where('status_bed', '=', 0)->get();
+        return view('content.bed', compact('beds', 'lists'));
+        // return $beds;
     }
 
     /**

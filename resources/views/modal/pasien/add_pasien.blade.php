@@ -1,5 +1,4 @@
-@foreach ($pasiens as $pasien)
-<div class="modal fade" id="add_pasien{{ $pasien->idBed }}" tabindex="-1">
+<div class="modal fade" id="add_pasien" tabindex="-1">
   <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -10,49 +9,55 @@
             <form action="/add_pasien" method="POST">
               @csrf
               <div class="mb-3">
-                  <label for="nama" class="form-label">Nama Pasien</label><span
-                  class="required">:</span>
-                  <input type="text" name="nama" required="required" class="form-control" id="nama"
-                  aria-describedby="emailHelp"><span
-                  style="color:red">@error('nama'){{ $message }}@enderror</span>
-                  <div id="emailHelp" class="form-text">Sesuai dengan KTP
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="jk" class="form-label">Jenis Kelamin</label><span
-                  class="required">:</span>
-                  <select class="form-control" name="jk" id="jk">
-                    <option value="">--Pilih Jenis Kelamin--</option>
-                    <option value="Tn" name="jk" id="jk">Tn</option>
-                    <option value="Ny" name="jk" id="jk">Ny</option>
-                    <option value="An" name="jk" id="jk">An</option>
-                    <option value="Sdr" name="jk" id="jk">Sdr</option>
-                    <option value="Sdri" name="jk" id="jk">Sdri</option>
-                  </select>
-                  <span style="color:red">@error('jk'){{ $message }}@enderror</span>
-                </div>
-                <div class="mb-3">
-                  <label for="alamat" class="form-label">Alamat</label><span
-                  class="required">:</span>
-                  <input type="text" name="alamat" required="required" class="form-control" id="alamat"><span
-                  style="color:red">@error('alamat'){{ $message }}@enderror</span>
+                <label for="no_rm" class="form-label">No Rekam Medis</label><span
+                class="required">:</span>
+                <input type="text" name="no_rm" required="required" maxlength="6" class="form-control" id="no_rm"><span
+                style="color:red">@error('no_rm'){{ $message }}@enderror</span>
               </div>
               <div class="mb-3">
-                  <label for="no_rm" class="form-label">No Rekam Medis</label><span
-                  class="required">:</span>
-                  <input type="text" name="no_rm" required="required" class="form-control" id="no_rm"><span
-                  style="color:red">@error('no_rm'){{ $message }}@enderror</span>
+                <label for="nama" class="form-label">Nama Pasien</label><span
+                class="required">:</span>
+                <input type="text" name="nama" required="required" class="form-control" id="nama"
+                aria-describedby="emailHelp"><span
+                style="color:red">@error('nama'){{ $message }}@enderror</span>
+                <div id="emailHelp" class="form-text">Sesuai dengan KTP
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="tgl_lahir" class="form-label">Tanggal Lahir</label><span
+                class="required">:</span>
+                <input type="date" name="tgl_lahir" required="required" class="form-control" id="tgl_lahir"><span
+                style="color:red">@error('tgl_lahir'){{ $message }}@enderror</span>
               </div>
               <div class="mb-3">
                 <label for="no_rm" class="form-label">NIK</label><span
                 class="required">:</span>
-                <input type="text" name="nik" required="required" class="form-control" id="nik"><span
+                <input type="text" name="nik" required="required" maxlength="16" class="form-control" id="nik"><span
                 style="color:red">@error('nik'){{ $message }}@enderror</span>
+              </div>
+              <div class="mb-3">
+                <label for="jk" class="form-label">Jenis Kelamin</label><span
+                class="required">:</span>
+                <select class="form-control" name="jk" id="jk">
+                  <option value="">--Pilih Jenis Kelamin--</option>
+                  <option value="Tn" name="jk" id="jk">Tn</option>
+                  <option value="Ny" name="jk" id="jk">Ny</option>
+                  <option value="An" name="jk" id="jk">An</option>
+                  <option value="Sdr" name="jk" id="jk">Sdr</option>
+                  <option value="Sdri" name="jk" id="jk">Sdri</option>
+                </select>
+                <span style="color:red">@error('jk'){{ $message }}@enderror</span>
+              </div>
+              <div class="mb-3">
+                <label for="alamat" class="form-label">Alamat</label><span
+                class="required">:</span>
+                <input type="text" name="alamat" required="required" class="form-control" id="alamat"><span
+                style="color:red">@error('alamat'){{ $message }}@enderror</span>
               </div>
               <div class="mb-3">
                 <label for="no_rm" class="form-label">No Telepon</label><span
                 class="required">:</span>
-                <input type="text" name="no_telp" required="required" class="form-control" id="no_telp"><span
+                <input type="text" name="no_telp" required="required" maxlength="12" class="form-control" id="no_telp"><span
                 style="color:red">@error('no_telp'){{ $message }}@enderror</span>
               </div>
               <div class="mb-3">
@@ -64,12 +69,16 @@
               <div class="mb-3">
                 <label for="no_rm" class="form-label">Bed</label><span
                 class="required">:</span>
-                <input type="text" name="id_bed" class="form-control" id="id_bed" value="{{ $pasien->idBed }}"><span
-                style="color:red">@error('bed'){{ $message }}@enderror</span>
+                <select class="form-control" name="id_bed" id="id_bed">
+                  @foreach ($lists as $list)
+                      <option value="{{ $list->id }}">{{ $list->id }} - {{ $list->nama_ruangan }} - {{ $list->kategori }}</option>
+                  @endforeach
+                </select>
+                <span style="color:red">@error('bed'){{ $message }}@enderror</span>
               </div>
               <div class="modal-footer">
+                <button class="btn btn-danger btn-xs" data-bs-dismiss="modal">Kembali</button>
                 <button type="submit" class="btn btn-success">Submit</button>
-                <button class="btn btn-danger btn-xs" data-dismiss="modal">Kembali</button>
               </div>
             </form>
         </div>
@@ -103,4 +112,3 @@
 			return prefix == undefined ? rupiah : (rupiah ? '' + rupiah : '');
 		}
 	</script>
-@endforeach

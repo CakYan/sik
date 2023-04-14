@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\pasien;
+use App\Models\bed;
 use App\Http\Requests\StorepasienRequest;
 use App\Http\Requests\UpdatepasienRequest;
 use Illuminate\Support\Facades\DB;
@@ -39,36 +40,37 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        // return ($request);
         $request->validate([
             'nama' => 'required',
             'jk' => 'required',
             'alamat' => 'required',
-            'nik' => 'required',
-            'no_telp' => 'required',
-            'no_rm' => 'required',
+            'nik' => 'required|unique:pasiens',
+            'no_telp' => 'required|unique:pasiens',
+            'no_rm' => 'required|unique:pasiens|max:8',
             'status' => 'required',
         ]);
 
-        $query = pasien::create([
-            'nama' => $request->input('nama'),
-            'jk' =>$request->input('jk'),
-            'alamat' => $request->input('alamat'),
-            'nik' => $request->input('nik'),
-            'no_telp' => $request->input('no_telp'),
-            'tgl_masuk' => date(now()),
-            'no_rm' => $request->input('no_rm'),
-            'status' => $request->input('status'),
-            'id_bed' => $request->input('id_bed')
-        ]);
-        // return ($query);
+        try {
+            $query = pasien::create([
+                'nama' => $request->input('nama'),
+                'jk' =>$request->input('jk'),
+                'alamat' => $request->input('alamat'),
+                'nik' => $request->input('nik'),
+                'no_telp' => $request->input('no_telp'),
+                'tgl_masuk' => date(now()),
+                'no_rm' => $request->input('no_rm'),
+                'status' => $request->input('status'),
+                'id_bed' => $request->input('id_bed')
+            ]);
 
-        if ($query) {
-            return back()->with('berhasil', 'Data telah ditambahkan');
-            // return ($query);
-        } else {
-            return back()->with('fail', 'Ada sesuatu yang salah');
-        }
+            $bed = bed::find($request->input('id_bed'))->update([
+                'status_bed' => 1
+            ]);
+
+            return back()->with('success', 'Data telah ditambahkan'); 
+        } catch (\Exception $e) {
+            return back()->with('error', 'An error occurred while adding data: '.$e->getMessage());
+        }       
     }
 
     /**
@@ -113,22 +115,24 @@ class PasienController extends Controller
             'status' => 'required',
         ]);
 
-        $pasien = Pasien::where('id', $request->input('id'))->update([
-            'nama' => $request->input('nama'),
-            'jk' => $request->input('jk'),
-            'alamat' => $request->input('alamat'),
-            'nik' => $request->input('nik'),
-            'no_telp' => $request->input('no_telp'),
-            'no_rm' => $request->input('no_rm'),
-            'status' => $request->input('status'),
-        ]);
-
-        if ($pasien) {
-            // dd($pasien);
+        try {
+            $pasien = Pasien::where('id', $request->input('id'))->update([
+                'nama' => $request->input('nama'),
+                'jk' => $request->input('jk'),
+                'alamat' => $request->input('alamat'),
+                'nik' => $request->input('nik'),
+                'no_telp' => $request->input('no_telp'),
+                'no_rm' => $request->input('no_rm'),
+                'status' => $request->input('status')
+            ]);
+            if ($request->input('status') == 'Sudah Rawat Inap') {
+                $bed = bed::find($request->input('id_bed'))->update([
+                    'status_bed' => 0
+                ]);
+            }
             return back()->with('update', 'Data telah diperbarui');
-        } 
-        else {
-            return back()->with('fail', 'Ada sesuatu yang salah');
+        } catch (\Throwable $th) {
+            return back()->with('error', 'An error occurred while adding data: '.$th->getMessage());
         }
     }
 

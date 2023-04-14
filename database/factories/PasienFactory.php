@@ -24,8 +24,8 @@ class PasienFactory extends Factory
             'no_telp' => $this->faker->phoneNumber(),
             'tgl_masuk' => date(now()),
             'no_rm' => $this->faker->unique()->numerify('##.##.##'),
+            'tgl_lahir' => $this->faker->date(),
             'status' => 'Sedang Rawat Inap',
-            'id_visite' => '1',
             'id_bed' => '1'
         ];
     }

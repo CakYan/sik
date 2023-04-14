@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('alamat');
+            $table->string('tgl_lahir');
             $table->string('jk');
             $table->string('nik')->unique();
             $table->string('no_telp')->unique();
             $table->date('tgl_masuk');
             $table->string('no_rm')->unique();
             $table->string('status');
-            $table->string('id_visite')->nullable();
             $table->string('id_bed')->nullable();
             $table->timestamps();
         });

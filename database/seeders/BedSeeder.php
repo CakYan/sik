@@ -20,6 +20,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '1',
             'id_ruangan' => '1'
         ]);
         Bed::create([
@@ -27,6 +28,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '2'
         ]);
         Bed::create([
@@ -34,6 +36,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '3'
         ]);
         Bed::create([
@@ -41,6 +44,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '4'
         ]);
         Bed::create([
@@ -48,6 +52,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '5'
         ]);
         Bed::create([
@@ -55,6 +60,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '6'
         ]);
         Bed::create([
@@ -62,6 +68,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '7'
         ]);
         Bed::create([
@@ -69,6 +76,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '8'
         ]);
         Bed::create([
@@ -76,6 +84,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '7'
         ]);
         Bed::create([
@@ -83,6 +92,7 @@ class BedSeeder extends Seeder
             'kondisi' => 'baik',
             'jenis' => 'asiyaap',
             'tgl_beli' => '2002-10-10',
+            'status_bed' => '0',
             'id_ruangan' => '8'
         ]);
     }
