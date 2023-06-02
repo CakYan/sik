@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>SIK - Rawat Inap || Klinik Muhammadiyah Sugio</title>
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -54,7 +55,7 @@
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="" class="">
-                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>SIK -  Rawat Inap</h3>
+                                <h3 class="text-primary"><img src="{{ asset('img/logo.png') }}" style="width: 50px" alt=""></i> SIK -  Rawat Inap</h3>
                             </a>
                         </div>
 

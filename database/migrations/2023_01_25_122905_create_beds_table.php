@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('nomor_bed');
             $table->string('kondisi');
-            $table->string('jenis');
             $table->date('tgl_beli');
-            $table->string('status_bed');
-            $table->string('id_ruangan')->nullable();
+            $table->integer('status_bed');
+            $table->integer('id_ruangan')->nullable();
             $table->timestamps();
         });
     }

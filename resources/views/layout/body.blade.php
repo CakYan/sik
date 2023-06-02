@@ -14,7 +14,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="/dashboard" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>SIK-Rawat Inap</h3>
+                    <h3 class="text-primary"></i>SIK-Rawat Inap</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -55,8 +55,8 @@
                             <span class="d-none d-lg-inline-flex">{{ session('username') }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
+                            {{-- <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a> --}}
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();

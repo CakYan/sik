@@ -98,7 +98,7 @@ class VisiteController extends Controller
     }
 
     
-    public function add_apoteker(Request $request, $id){
+    public function add_farmasi(Request $request, $id){
         $request->validate([
             'nama_ppa' => 'required',
             'visite' => 'required'

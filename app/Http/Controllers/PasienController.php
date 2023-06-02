@@ -48,6 +48,7 @@ class PasienController extends Controller
             'no_telp' => 'required|unique:pasiens',
             'no_rm' => 'required|unique:pasiens|max:8',
             'status' => 'required',
+            'tgl_lahir' => 'required'
         ]);
 
         try {
@@ -60,7 +61,8 @@ class PasienController extends Controller
                 'tgl_masuk' => date(now()),
                 'no_rm' => $request->input('no_rm'),
                 'status' => $request->input('status'),
-                'id_bed' => $request->input('id_bed')
+                'id_bed' => $request->input('id_bed'),
+                'tgl_lahir' => $request->input('tgl_lahir')
             ]);
 
             $bed = bed::find($request->input('id_bed'))->update([
@@ -102,9 +104,8 @@ class PasienController extends Controller
      * @param  \App\Models\pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatepasienRequest $request, pasien $pasien)
+    public function update(UpdatepasienRequest $request)
     {
-        // return $request;
         $request->validate([
             'nama' => 'required',
             'jk' => 'required',
@@ -113,6 +114,7 @@ class PasienController extends Controller
             'no_telp' => 'required',
             'no_rm' => 'required',
             'status' => 'required',
+            'tgl_lahir' => 'required'
         ]);
 
         try {
@@ -123,7 +125,8 @@ class PasienController extends Controller
                 'nik' => $request->input('nik'),
                 'no_telp' => $request->input('no_telp'),
                 'no_rm' => $request->input('no_rm'),
-                'status' => $request->input('status')
+                'status' => $request->input('status'),
+                'tgl_lahir' => $request->input('tgl_lahir')
             ]);
             if ($request->input('status') == 'Sudah Rawat Inap') {
                 $bed = bed::find($request->input('id_bed'))->update([

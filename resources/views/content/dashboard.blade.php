@@ -12,8 +12,8 @@
                 <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fa fa-chart-line fa-3x text-primary"></i>
                     <div class="ms-3">
-                        <p class="mb-2">Pasien yang Dirawat Inap</p>
-                        <h6 class="mb-0" style="text-align: right">$1234</h6>
+                        <p class="mb-2">Pasien yang Sedang Dirawat Inap</p>
+                        <h6 class="mb-0" style="text-align: right">{{ $pasiens }}</h6>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <i class="fa fa-chart-bar fa-3x text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Total Pasien yang Dirawat Inap</p>
-                        <h6 class="mb-0" style="text-align: right">$1234</h6>
+                        <h6 class="mb-0" style="text-align: right">{{ $totals }}</h6>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
 
 
     <!-- Sales Chart Start -->
-    <div class="container-fluid pt-4 px-4">
+    {{-- <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-light text-center rounded p-4">
@@ -53,6 +53,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Sales Chart End -->
 @endsection

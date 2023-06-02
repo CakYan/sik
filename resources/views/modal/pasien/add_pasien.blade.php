@@ -11,7 +11,7 @@
               <div class="mb-3">
                 <label for="no_rm" class="form-label">No Rekam Medis</label><span
                 class="required">:</span>
-                <input type="text" name="no_rm" required="required" maxlength="6" class="form-control" id="no_rm"><span
+                <input type="text" name="no_rm" required="required" maxlength="8" class="form-control" id="no_rm"><span
                 style="color:red">@error('no_rm'){{ $message }}@enderror</span>
               </div>
               <div class="mb-3">

@@ -20,32 +20,32 @@ class RuanganSeeder extends Seeder
             'nama_ruangan' => 'Marwah 1'
         ]);
         Ruangan::create([
-            'kategori' => 'VIP',
+            'kategori' => 'NonVIP',
             'nama_ruangan' => 'Marwah 2'
         ]);
         Ruangan::create([
-            'kategori' => 'VIP',
+            'kategori' => 'NonVIP',
             'nama_ruangan' => 'Marwah 3'
         ]);
         Ruangan::create([
             'kategori' => 'NonVIP',
-            'nama_ruangan' => 'Sakinah 1'
+            'nama_ruangan' => 'Marwah 4'
         ]);
         Ruangan::create([
             'kategori' => 'NonVIP',
-            'nama_ruangan' => 'Sakinah 2'
+            'nama_ruangan' => 'Shafa 1'
         ]);
         Ruangan::create([
             'kategori' => 'NonVIP',
-            'nama_ruangan' => 'Sakinah 3'
+            'nama_ruangan' => 'Shafa 2'
         ]);
         Ruangan::create([
             'kategori' => 'NonVIP',
-            'nama_ruangan' => 'Sakinah 4'
+            'nama_ruangan' => 'Shafa 3'
         ]);
         Ruangan::create([
             'kategori' => 'NonVIP',
-            'nama_ruangan' => 'Sakinah 5'
+            'nama_ruangan' => 'Shafa 4'
         ]);
     }
 }

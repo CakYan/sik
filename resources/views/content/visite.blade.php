@@ -85,27 +85,27 @@
                   </div>
                   {{-- End Gizi --}}
 
-                  {{-- Apoteker --}}
+                  {{-- farmasi --}}
                   <div class="card mt-2 mr-2">
                     <div class="card-header">
-                      Apoteker
+                      Farmasi
                     </div>
                     <div class="card-body">
-                      <form action="/visite_apoteker/{{ $pasiens->id }}" method="POST">
+                      <form action="/visite_farmasi/{{ $pasiens->id }}" method="POST">
                         @csrf
                         <input type="hidden" name="pasien_id" value="{{ $pasiens->id }}">
                         <blockquote class="blockquote mb-0">
                           <input type="text" name="nama_ppa" id="nama_ppa" class="form-control mb-3" placeholder="Ketik Nama Disini" required>
                           <textarea name="visite" id="editor" cols="20" rows="10" class="form-control mb-3" placeholder="Ketik Disini" required></textarea>
                         </blockquote>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_visite_apoteker">View Detail</button>
-                        @if (session('username') == 'Apoteker')
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_visite_farmasi">View Detail</button>
+                        @if (session('username') == 'farmasi')
                           <button type="submit" class="btn btn-success" style="float: right">Add Visite</button>
                         @endif
                       </form>
                     </div>
                   </div>
-                  {{-- End Apoteker --}}
+                  {{-- End farmasi --}}
             </div>
         </div>
     </div>
@@ -114,5 +114,5 @@
 @include('modal.visite.view_visite_dokter')
 @include('modal.visite.view_visite_perawat')
 @include('modal.visite.view_visite_gizi')
-@include('modal.visite.view_visite_apoteker')
+@include('modal.visite.view_visite_farmasi')
 @endsection

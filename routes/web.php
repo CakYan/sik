@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/visite_dokter/{id}', [VisiteController::class, 'add_dokter']);
     Route::post('/visite_perawat/{id}', [VisiteController::class, 'add_perawat']);
     Route::post('/visite_gizi/{id}', [VisiteController::class, 'add_gizi']);
-    Route::post('/visite_apoteker/{id}', [VisiteController::class, 'add_apoteker']);
+    Route::post('/visite_farmasi/{id}', [VisiteController::class, 'add_farmasi']);
 });
 
 require __DIR__.'/auth.php';
